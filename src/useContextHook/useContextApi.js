@@ -14,6 +14,8 @@ export const AppContext = ({ children }) => {
     setLoading(true);
     try {
       const res = await fetchApiForYoutubeData('videos', params);
+      console.log('full response',res);
+      
       setVideoData(res.items)
       console.log(res.items);
 

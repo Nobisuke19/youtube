@@ -7,7 +7,11 @@ import { SlMenu } from "react-icons/sl";
 import { Link, useNavigate } from "react-router-dom";
 import Desktop_logo from "../../images/yt_dekstop.png"; // Corrected path
 import Mobile_logo from "../../images/youtube_mobile.png";
-import { IoIosSearch } from "react-icons/io";
+import { IoIosSearch, IoMdMic, IoMdMicOff } from "react-icons/io";
+import { MdVideoCall } from "react-icons/md";
+import { FaBell } from "react-icons/fa";
+import { RiAccountCircleLine } from "react-icons/ri";
+import { FiMoon, FiSun } from "react-icons/fi";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState();
@@ -38,7 +42,7 @@ const Header = () => {
       {loading && <Loader />}
       <div className="flex h-5 items-center">
         <div
-          className={`flex md:hidden md:mr-6 cursor-pointer items-start justify-center h-9 w-9 rounded-full hover:bg-${
+          className={`flex md:hidden md:mr-6 cursor-pointer items-center justify-center h-9 w-9 rounded-full hover:bg-${
             isDarkMode ? "gray-700" : "gray-300"
           }`}
           onClick={mobileToogleMenu}
@@ -67,9 +71,11 @@ const Header = () => {
           />
         </Link>
       </div>
+
+
       <div className="flex items-center group relative">
         <div
-          className={`flex px-3 h-10 md:ml-10 border border-[#303030] rounded-l-3xl group-focus-within:border-blue-500 md:group-focus-within:ml-5 md:group-focus-within-pl-0 ${  
+          className={`flex px-3 h-10 md:ml-10 border border-[#303030] rounded-l-3xl group-focus-within:border-blue-500 md:group-focus-within:ml-5 md:group-focus-within-pl-0 ${
             isDarkMode ? "border-gray-700" : "border-gray-300"
           }`}
         >
@@ -107,6 +113,53 @@ const Header = () => {
         >
           <IoIosSearch className="text-xl" />
         </button>
+        <button
+          className={`flex items-center justify-center w-[40px] md:w-[60px] h-8 md:h-10 rounded-full hover:bg-${
+            isDarkMode ? "gray-700" : " gray-300"
+          }`}
+          // onClick={handleSearchQuery}
+        >
+          {/* <IoMdMicOff className="text-xl"/> */}
+          <IoMdMic className="text-xl" />
+        </button>
+      </div>
+
+
+      <div className="flex items-center space-x-2 md:space-x-4">
+        <button
+          className={`hidden md:flex items-center justify-center h-10 w-10 rounded-full hover:bg-${
+            isDarkMode ? "gray-700" : "gray-300"
+          }`}
+        >
+          <MdVideoCall className="text-xl" />
+        </button>
+        <button
+          className={`hidden md:flex items-center justify-center h-10 w-10 rounded-full hover:bg-${
+            isDarkMode ? "gray-700" : "gray-300"
+          }`}
+        >
+          <FaBell className="text-xl" />
+        </button>
+        {/* <div className="flex space-x-0 md:space-x-2"> */}
+          <button
+            className={`hidden md:flex items-center justify-center h-10 w-10 rounded-full hover:bg-${
+              isDarkMode ? "gray-700" : "gray-300"
+            }`}
+          >
+            <RiAccountCircleLine className="text-xl" />
+          </button>
+          <button
+            className={` items-center justify-center h-10 w-10 rounded-full hover:bg-${
+              isDarkMode ? "gray-700" : "gray-300"
+            }`} onClick={toggleTheme}
+          >
+            {isDarkMode ? (
+              <FiSun className="text-xl text-yellow-300" />
+            ) : (
+              <FiMoon className="text-xl text-gray-800" />
+            )}
+          </button>
+        {/* </div> */}
       </div>
     </div>
   );
