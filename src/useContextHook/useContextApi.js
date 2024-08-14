@@ -14,8 +14,8 @@ export const AppContext = ({ children }) => {
     setLoading(true);
     try {
       const res = await fetchApiForYoutubeData('videos', params);
-      console.log('full response',res);
-      
+      console.log('full response', res);
+
       setVideoData(res.items)
       console.log(res.items);
 
@@ -29,23 +29,24 @@ export const AppContext = ({ children }) => {
   }
 
   useEffect(() => {
-   if(selectedCategory){
-    if (selectedCategory === 'Home') {
-      fetchYoutubeData({
-        part: 'snippet,contentDetails,statistics',
-        regioncode: 'IN',
-        maxResult: 10
-      })
-    } else {
-      fetchYoutubeData({
-        part: 'snippet,contentDetails,statistics',
-        chart:'mostPopular',
-        regioncode: 'IN',
-        maxResult: 10,
-        videoCategoryId: selectedCategory
-      })
+    if (selectedCategory) {
+      if (selectedCategory === '0') {
+        fetchYoutubeData({
+          part: 'snippet,contentDetails,statistics',
+          regioncode: 'IN',
+          maxResults: 50,
+          chart: 'mostPopular',
+        })
+      } else {
+        fetchYoutubeData({
+          part: 'snippet,contentDetails,statistics',
+          chart: 'mostPopular',
+          regioncode: 'IN',
+          maxResults: 50,
+          videoCategoryId: selectedCategory
+        })
+      }
     }
-   }
   }, [selectedCategory])
 
   return (
@@ -59,7 +60,7 @@ export const AppContext = ({ children }) => {
         loading,
         setLoading
       }}>
-        {children}
+      {children}
     </Context.Provider>
 
   )

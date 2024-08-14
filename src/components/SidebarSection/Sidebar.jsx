@@ -20,7 +20,7 @@ const Sidebar = () => {
     <div
       className={`md:block overflow-y-auto h-full py-4 w-[300px] mt-2 absolute md:relative z-10 ${
         mobileMenu ? "block" : "hidden"
-      } ${isDarkMode ? "border-gray-700" : "border-gray-200"} ${
+      } ${isDarkMode ? "border-gray-700 bg-gray-900" : "border-gray-200 bg-white"} ${
         mobileMenu ? "z-10" : "z-auto"
       }`}
     >

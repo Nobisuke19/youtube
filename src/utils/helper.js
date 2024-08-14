@@ -1,6 +1,6 @@
 import {formatDistanceToNow} from 'date-fns'
 
-export const formViewCount = (count) => {
+export const formatViewCount = (count) => {
     if (count >= 1000000) {
         return (count / 1000000).toFixed(1) + 'M';
     } else if (count >= 1000) {

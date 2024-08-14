@@ -15,12 +15,12 @@ import { FiMoon, FiSun } from "react-icons/fi";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState();
-  const { loading, mobileMenu, setMobleMenu } = useAppContext();
+  const { loading, mobileMenu, setMobileMenu } = useAppContext();
   const { isDarkMode, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   const mobileToogleMenu = () => {
-    setMobleMenu(!mobileMenu);
+    setMobileMenu(!mobileMenu);
   };
 
   const handleSearchQuery = () => {

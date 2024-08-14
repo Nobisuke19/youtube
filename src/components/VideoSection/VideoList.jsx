@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-// import { useTheme } from "../../useContextHook/useTheme";
+import { useTheme } from "../../useContextHook/useTheme";
 import { Link } from "react-router-dom";
-import { formatDuration } from "../../utils/helper";
+import { formatDuration, formatPublishTime, formatViewCount } from "../../utils/helper";
 import { fetchApiForYoutubeData } from "../../utils/fetchApi";
 
 const VideoList = ({ video }) => {
-  // const { isDarkmode } = useTheme();
+  const {isDarkMode} = useTheme()
   const [channelData, setChannelData] = useState();
 
   const fetchChannelData = async () => {
@@ -46,6 +46,11 @@ if (!video?.snippet || !channelData?.snippet) {
                   className="w-full h-full object-cover rounded-md mb-2"
                 />
               </div>
+            </div>
+            <div className={`flex flex-col ml-3 overflow-hidden ${isDarkMode ? "bg-gray-900 text-gray-300" : "bg-white text-gray-800"}`}>
+              <h3 className="text-md font-bold">{video?.snippet?.title}</h3>
+              <div className={`text-xs ${isDarkMode ? "text-gray-400":"text-gray-600"}`}>{video?.snippet?.channelTitle}</div>
+              <div className={`text-xs ${isDarkMode ? "text-gray-400":"text-gray-600"}`}>{formatViewCount(video?.statistics?.viewCount)} views. {formatPublishTime(video?.snippet?.publishedAt)}</div>
             </div>
           </div>
         </div>
